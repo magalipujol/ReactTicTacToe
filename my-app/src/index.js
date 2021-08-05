@@ -2,16 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    render() {
-        return (
-            <button className="square"
-                // When a Square is clicked, the onClick function provided by the Board is called
-                onClick={() => this.props.onClick()}>
-                {this.props.value}
-            </button>
-        );
-    }
+//  * the Square component changed, and now is a function component, that only contains a render method
+//  * and doesn't have it own state
+// class Square extends React.Component {
+//     render() {
+//         return (
+//             <button className="square"
+//                 // When a Square is clicked, the onClick function provided by the Board is called
+//                 // the Square components are controlled components. The Board has full control over them
+//                 onClick={() => this.props.onClick()}>
+//                 {this.props.value}
+//             </button>
+//         );
+//     }
+// }
+
+function Square(props) {
+    return (
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
+    )
 }
 
 class Board extends React.Component {
@@ -30,7 +41,7 @@ class Board extends React.Component {
     handleClick(i) {
         const squares = this.state.squares.slice()
         squares[i] = 'X'
-        this.setState({squares, squares})
+        this.setState({ squares, squares })
     }
     renderSquare(i) {
         return (
