@@ -8,8 +8,6 @@ import './index.css';
 //     render() {
 //         return (
 //             <button className="square"
-//                 // When a Square is clicked, the onClick function provided by the Board is called
-//                 // the Square components are controlled components. The Board has full control over them
 //                 onClick={() => this.props.onClick()}>
 //                 {this.props.value}
 //             </button>
@@ -19,6 +17,8 @@ import './index.css';
 
 function Square(props) {
     return (
+        // When a Square is clicked, the onClick function provided by the Board is called
+        // the Square components are controlled components. The Board has full control over them
         <button className="square" onClick={props.onClick}>
             {props.value}
         </button>
@@ -36,12 +36,16 @@ class Board extends React.Component {
         this.state = {
             // this stores the state of all 9 squares in the parent (board)
             squares: Array(9).fill(null),
+            // set the first move 'X' by default
+            xIsNext: true,
         }
     }
     handleClick(i) {
         const squares = this.state.squares.slice()
-        squares[i] = 'X'
-        this.setState({ squares, squares })
+        squares[i] = this.state.xIsNext ? 'X' : 'O'
+        this.setState({ 
+            squares: squares,
+            xIsNext: !this.state.xIsNext })
     }
     renderSquare(i) {
         return (
@@ -53,7 +57,7 @@ class Board extends React.Component {
     }
 
     render() {
-        const status = 'Next player: X';
+        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
         return (
             <div>
