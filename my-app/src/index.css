@@ -76,4 +76,19 @@ body {
   .game-info {
     margin-left: 20px;
   }
+
+  .time-buttons {
+    background-color: var(--dark-orange);
+    color: white;
+    font: 20px "Century Gothic", Futura, sans-serif;
+    font-family: 'Righteous', cursive;
+    border: solid 2px var(--dark-orange);
+  }
+
+  .time-buttons:hover {
+    background-color: #da6a4e;
+  }
   
+  .time-buttons:active {
+    border: solid 2px #2A9D8F;
+  }
