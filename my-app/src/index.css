@@ -46,6 +46,15 @@ body {
     color: var(--dark-blue);
   }
 
+  .square:hover {
+    background-color: rgb(243, 243, 243);
+    border: 1px solid rgb(243, 243, 243);
+  }
+
+  .square:active {
+    border: 3px solid var(--orange);
+  }
+
   .board {
     background-color: var(--orange) !important;
     padding: 10px;
